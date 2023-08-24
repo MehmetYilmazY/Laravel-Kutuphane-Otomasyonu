@@ -8,6 +8,9 @@
 - Kitapları listeleme
 - Kitapları silme
 
+## Gelecek Özellikler
+- Kitapları insanlara atama
+
 ## Gereksinimler
 
 - PHP 7.4 veya daha yükseği

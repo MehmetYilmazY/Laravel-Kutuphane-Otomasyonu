@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+                <div class="card-header">{{ __('Kütüphane Sistemi') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -13,8 +13,9 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    {{ __('You are logged in!') }}
+                    <a href="{{ route('kitap.create') }}" class="btn btn-primary">Yeni Kitap Ekle</a>
+                    <br><br>
+                    <a href="{{ route('kitap.kitaplar') }}" class="btn btn-success">Kitapları Görüntüle</a>
                 </div>
             </div>
         </div>

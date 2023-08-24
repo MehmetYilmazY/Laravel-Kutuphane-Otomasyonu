@@ -21,6 +21,7 @@
                     <div class="mb-3">
                         <a href="{{ route('kitap.kitaplar') }}" class="btn btn-success">Kitapları Görüntüle</a>
                     </div>
+                        
                 </div>
             </div>
         </div>

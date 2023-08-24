@@ -60,9 +60,15 @@ public function update(Request $request, $id)
 
     public function destroy($id)
 {
-    $kitap = Kitap::findOrFail($id);
+    $kitap = Kitap::find($id);
     $kitap->delete();
 
     return redirect()->route('kitap.kitaplar')->with('success', 'Kitap başarıyla silindi.');
 }
+
+public function __construct()
+{
+    $this->middleware('auth'); 
+}
+
 }

@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('insan', function (Blueprint $table) {
             $table->id();
             $table->string('Ad_Soyad');
+            $table->string('irtibat');
             $table->timestamps();
         });
     }

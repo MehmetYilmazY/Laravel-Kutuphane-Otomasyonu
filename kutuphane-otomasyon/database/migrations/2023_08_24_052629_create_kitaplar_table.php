@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('kitap_adi');
             $table->string('kitap_yazar');
             $table->string('kitap_ISBN');
+            $table->string('kitap_kimde')->nullable();
             $table->timestamps();
         });
     }

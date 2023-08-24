@@ -11,6 +11,6 @@ class Kitap extends Model
 {
     use HasFactory;
     protected $table = 'kitaplar';
-    protected $fillable = ['kitap_adi', 'kitap_yazar', 'kitap_ISBN'];
+    protected $fillable = ['kitap_adi', 'kitap_yazar', 'kitap_ISBN','kitap_kimde'];
 
 }

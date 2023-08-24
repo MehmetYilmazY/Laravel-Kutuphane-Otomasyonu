@@ -3,8 +3,8 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
+        <div class="col-sm-5">
+            <div class="card text-center ">
                 <div class="card-header">{{ __('Kütüphane Sistemi') }}</div>
 
                 <div class="card-body">
@@ -15,11 +15,19 @@
                     @endif
 
                     <div class="mb-3">
-                        <a href="{{ route('kitap.create') }}" class="btn btn-primary">Yeni Kitap Ekle</a>
+                        <a href="{{ route('kitap.create') }}" class="btn btn-outline-primary btn-lg btn-block">Yeni Kitap Ekle</a>
                     </div>
                     
                     <div class="mb-3">
-                        <a href="{{ route('kitap.kitaplar') }}" class="btn btn-success">Kitapları Görüntüle</a>
+                        <a href="{{ route('kitap.kitaplar') }}" class="btn btn-outline-primary btn-lg btn-block">Kitapları Görüntüle</a>
+                    </div>
+
+                    <div class="mb-3">
+                        <a href="{{ route('kitap.kisiler') }}" class="btn btn-outline-danger btn-lg btn-block">Üyeleri Ekle</a>
+                    </div>
+
+                    <div class="mb-3">
+                        <a href="{{ route('kitap.uyeler') }}" class="btn btn-outline-danger btn-lg btn-block">Üyeleri Görüntüle</a>
                     </div>
                         
                 </div>

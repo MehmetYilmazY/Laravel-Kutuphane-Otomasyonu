@@ -3,12 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kitap;
+use App\Models\Insan;
 use Illuminate\Http\Request;
+
 
 
 class KitapController extends Controller
 {
 
+
+    
     public function create()
     {
         return view('kitap.create');
@@ -30,14 +34,36 @@ class KitapController extends Controller
 
     Kitap::create($validatedData);
 
-    return redirect()->route('kitap.create')
+    return redirect()->route('kitap.kitaplar')
+        ->with('success', 'Kullanıcı başarıyla oluşturuldu.');
+}
+
+
+public function kullaniciCreate()
+{
+    return view('kitap.kisiler');
+}
+
+public function kullaniciStore(Request $request)
+{
+$validatedData = $request->validate([
+    'Ad_Soyad' => 'required',
+    'irtibat' => 'required'    
+    
+
+]);
+    Insan::create($validatedData);
+
+    return redirect()->route('kitap.kisiler')
         ->with('success', 'Kullanıcı başarıyla oluşturuldu.');
 }
 
 public function edit($id)
 {
     $kitap = Kitap::findOrFail($id);
-    return view('kitap.edit', compact('kitap'));
+    $insanlar = Insan::all();
+
+    return view('kitap.edit', compact('kitap', 'insanlar'));
 }
 
 public function update(Request $request, $id)
@@ -46,16 +72,24 @@ public function update(Request $request, $id)
         'kitap_adi' => 'required',
         'kitap_yazar' => 'required',
         'kitap_ISBN' => 'required',
+        'kitap_kimde' => 'required',
+
     ]);
 
     Kitap::where('id', $id)->update($validatedData);
 
-    return redirect()->route('kitap.create')->with('success', 'Kitap başarıyla güncellendi.');
+    return redirect()->route('kitap.kitaplar')->with('success', 'Kitap başarıyla güncellendi.');
 }
     public function kitaplar()
     {
         $kitaplar = Kitap::all();
-        return view(' kitaplar', compact('kitaplar'));
+        return view('kitaplar', compact('kitaplar'));
+    }
+
+    public function uyeler()
+    {
+        $uyeler = Insan::all();
+        return view('kitap.uyeler', compact('uyeler'));
     }
 
     public function destroy($id)

@@ -8,14 +8,19 @@
                 <div class="card-header">{{ __('Kütüphane Sistemi') }}</div>
 
                 <div class="card-body">
-                    @if (session('status'))
+                    @if (session('success'))
                         <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
+                            {{ session('success') }}
                         </div>
                     @endif
-                    <a href="{{ route('kitap.create') }}" class="btn btn-primary">Yeni Kitap Ekle</a>
-                    <br><br>
-                    <a href="{{ route('kitap.kitaplar') }}" class="btn btn-success">Kitapları Görüntüle</a>
+
+                    <div class="mb-3">
+                        <a href="{{ route('kitap.create') }}" class="btn btn-primary">Yeni Kitap Ekle</a>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <a href="{{ route('kitap.kitaplar') }}" class="btn btn-success">Kitapları Görüntüle</a>
+                    </div>
                 </div>
             </div>
         </div>

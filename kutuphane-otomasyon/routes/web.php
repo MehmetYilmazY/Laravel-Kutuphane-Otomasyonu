@@ -30,3 +30,8 @@ Route::get('/uyeler', [KitapController::class, 'uyeler'])->name('kitap.uyeler');
 
 Route::get('/kisiler', [KitapController::class, 'kullaniciCreate'])->name('kitap.kisiler');
 Route::post('/kisiler', [KitapController::class, 'kullaniciStore'])->name('kitap.kullaniciStore');
+
+Route::get('/satilik', [KitapController::class, 'satilikCreate'])->name('kitap.satilik');
+Route::post('/satilik', [KitapController::class, 'satilikStore'])->name('kitap.satilikStore');
+
+Route::get('/satiliklist', [KitapController::class, 'satilikList'])->name('kitap.satiliklist');

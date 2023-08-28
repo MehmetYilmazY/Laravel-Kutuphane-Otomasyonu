@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Kitap;
 use App\Models\Insan;
+use App\Models\satilik;
 use Illuminate\Http\Request;
 
 
@@ -104,5 +105,31 @@ public function __construct()
 {
     $this->middleware('auth'); 
 }
+
+public function satilikCreate()
+{
+    return view('kitap.satilik');
+}
+
+public function satilikStore(Request $request)
+{
+$validatedData = $request->validate([
+    'kitap_adi' => 'required',
+    'kitap_yazar' => 'required',
+    'kitap_ISBN' => 'required',    
+
+]);
+    satilik::create($validatedData);
+
+    return redirect()->route('kitap.satilik')
+        ->with('success', 'Kullanıcı başarıyla oluşturuldu.');
+}
+
+public function satilikList()
+{
+    $satiliklar = satilik::all();
+    return view('kitap.satiliklist', compact('satiliklar'));
+}
+
 
 }

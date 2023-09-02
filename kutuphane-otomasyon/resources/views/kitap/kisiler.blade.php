@@ -28,7 +28,9 @@
                     <form action="{{ route('kitap.kullaniciStore') }}" method="POST">
                         @csrf
                         <input type="text" name="Ad_Soyad" placeholder="Ad Soyad">
-                        <input type="text" name="irtibat" placeholder="İrtibat Numarası">                                        
+                        <input type="text" name="irtibat" placeholder="İrtibat Numarası">  
+                        <input type="email" name="email" placeholder="E-Posta">
+                        <input type="password" name="password" placeholder="Şifre">
                         <!-- Diğer gerekli alanları buraya ekleyin -->
                         <button type="submit">Ekle</button>
                     </form>

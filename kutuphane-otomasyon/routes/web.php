@@ -22,6 +22,10 @@ Route::get('/edit/{id}', [App\Http\Controllers\KitapController::class, 'edit'])-
 Route::put('/update/{id}', [App\Http\Controllers\KitapController::class, 'update'])->name('kitap.update');
 Route::delete('/delete/{id}', [KitapController::class, 'destroy'])->name('kitap.destroy');
 
+Route::get('/uye_edit/{id}', [App\Http\Controllers\KitapController::class, 'uyeEdit'])->name('kitap.uyeEdit');
+Route::put('/uye_update/{id}', [App\Http\Controllers\KitapController::class, 'uyeUpdate'])->name('kitap.uyeUpdate');
+Route::delete('/uye_delete/{id}', [KitapController::class, 'uyeDestroy'])->name('kitap.uyeDestroy');
+
 
 Route::get('/kitaplar', [KitapController::class, 'kitaplar'])->name('kitap.kitaplar');
 

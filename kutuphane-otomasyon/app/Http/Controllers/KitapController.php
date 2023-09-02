@@ -16,7 +16,12 @@ class KitapController extends Controller
     
     public function create()
     {
+     
+        if (auth()->user()->usertype === 'admin') {
         return view('kitap.create');
+    } else {
+        abort(403); // Yetki yoksa hata sayfasına yönlendirme
+    }
     }
 
     public function store(Request $request)
@@ -89,8 +94,14 @@ public function update(Request $request, $id)
 
     public function uyeler()
     {
-        $uyeler = Insan::all();
-        return view('kitap.uyeler', compact('uyeler'));
+        if (auth()->user()->usertype === 'admin') {
+            // Sadece admin yetkisi olan kullanıcılar bu sayfayı görüntüleyebilir.
+            $uyeler = Insan::all();
+            return view('kitap.uyeler', compact('uyeler'));
+        } else {
+            abort(403); // Yetki yoksa hata sayfasına yönlendirme
+        }
+        
     }
 
     public function destroy($id)
@@ -108,7 +119,11 @@ public function __construct()
 
 public function satilikCreate()
 {
+    if (auth()->user()->usertype === 'admin') {
     return view('kitap.satilik');
+} else {
+    abort(403); // Yetki yoksa hata sayfasına yönlendirme
+}
 }
 
 public function satilikStore(Request $request)
@@ -117,12 +132,14 @@ $validatedData = $request->validate([
     'kitap_adi' => 'required',
     'kitap_yazar' => 'required',
     'kitap_ISBN' => 'required',    
+    'kitap_stok' => 'required',    
+    'kitap_fiyat' => 'required'    
 
 ]);
     satilik::create($validatedData);
 
     return redirect()->route('kitap.satilik')
-        ->with('success', 'Kullanıcı başarıyla oluşturuldu.');
+        ->with('success', 'Kitap başarıyla listelendi.');
 }
 
 public function satilikList()
@@ -130,6 +147,30 @@ public function satilikList()
     $satiliklar = satilik::all();
     return view('kitap.satiliklist', compact('satiliklar'));
 }
+
+
+public function uyeEdit($id)
+{
+    $user = Insan::findOrFail($id); // Tekil bir kullanıcı nesnesi çekin
+    $insanlar = Insan::all();
+
+    return view('kitap.uye_edit', compact('user', 'insanlar')); // $users yerine $user kullanın
+}
+
+public function uyeUpdate(Request $request, $id)
+{
+    $validatedData = $request->validate([
+        'name' => 'required',
+        'email' => 'required',
+        'irtibat' => 'required',
+        'usertype' => 'required',
+    ]);
+
+    Insan::where('id', $id)->update($validatedData);
+
+    return redirect()->route('kitap.uyeler')->with('success', 'Üye başarıyla güncellendi.');
+}
+
 
 
 }

@@ -14,26 +14,32 @@
                         </div>
                     @endif
                     @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
-                    
-                    
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
 
                     <form action="{{ route('kitap.store') }}" method="POST">
                         @csrf
-                        <input type="text" name="kitap_adi" placeholder="Kitap Adı">
-                        <input type="text" name="kitap_yazar" placeholder="Kitap Yazarı">
-                        <input type="text" name="kitap_ISBN" placeholder="ISBN Kodu">                     
+                        <div class="mb-3">
+                            <label for="kitap_adi" class="form-label">Kitap Adı</label>
+                            <input type="text" name="kitap_adi" id="kitap_adi" class="form-control" placeholder="Kitap Adı">
+                        </div>
+                        <div class="mb-3">
+                            <label for="kitap_yazar" class="form-label">Kitap Yazarı</label>
+                            <input type="text" name="kitap_yazar" id="kitap_yazar" class="form-control" placeholder="Kitap Yazarı">
+                        </div>
+                        <div class="mb-3">
+                            <label for="kitap_ISBN" class="form-label">ISBN Kodu</label>
+                            <input type="text" name="kitap_ISBN" id="kitap_ISBN" class="form-control" placeholder="ISBN Kodu">
+                        </div>
                         <!-- Diğer gerekli alanları buraya ekleyin -->
-                        <button type="submit">Ekle</button>
+                        <button type="submit" class="btn btn-primary">Ekle</button>
                     </form>
-
                 </div>
             </div>
         </div>

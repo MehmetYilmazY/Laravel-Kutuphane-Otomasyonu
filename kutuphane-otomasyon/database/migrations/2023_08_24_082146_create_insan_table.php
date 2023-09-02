@@ -15,6 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('Ad_Soyad');
             $table->string('irtibat');
+            $table->string('email')->unique();
+            $table->string('password');
+            $table->string('usertype')->nullable();
             $table->string('sahip_olunan');
             $table->timestamps();
         });

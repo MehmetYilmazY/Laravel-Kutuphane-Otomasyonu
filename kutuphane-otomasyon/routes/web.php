@@ -39,3 +39,7 @@ Route::get('/satilik', [KitapController::class, 'satilikCreate'])->name('kitap.s
 Route::post('/satilik', [KitapController::class, 'satilikStore'])->name('kitap.satilikStore');
 
 Route::get('/satiliklist', [KitapController::class, 'satilikList'])->name('kitap.satiliklist');
+
+Route::post('/kitap/satin-al/{id}', [KitapController::class, 'satinAl'])->name('kitap.satinAl');
+Route::get('/kullanici/envanter', 'App\Http\Controllers\KitapController@envanter')->name('kullanici.envanter');
+

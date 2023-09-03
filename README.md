@@ -7,9 +7,11 @@
 - Kitapları düzenleyebilme
 - Kitapları listeleme
 - Kitapları silme
+- Kitapları insanlara atama
 
 ## Gelecek Özellikler
-- Kitapları insanlara atama
+
+- öneri bekleniyor
 
 ## Gereksinimler
 

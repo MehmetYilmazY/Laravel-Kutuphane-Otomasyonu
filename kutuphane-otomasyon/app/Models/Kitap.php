@@ -13,8 +13,4 @@ class Kitap extends Model
     protected $table = 'kitaplar';
     protected $fillable = ['kitap_adi', 'kitap_yazar', 'kitap_ISBN','kitap_kimde'];
 
-    public function kullanici()
-    {
-        return $this->belongsToMany(User::class, 'user_kitap', 'kitap_id', 'user_id');
-    }
 }

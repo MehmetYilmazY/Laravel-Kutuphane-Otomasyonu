@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Kitap;
 use App\Models\Insan;
 use App\Models\satilik;
-use App\Models\SatilikKitap;
-use App\Models\User;
+use Illuminate\Http\Request;
 
 
 
@@ -174,38 +171,6 @@ public function uyeUpdate(Request $request, $id)
     return redirect()->route('kitap.uyeler')->with('success', 'Üye başarıyla güncellendi.');
 }
 
-public function satinAl($id)
-{
-    $kitap = satilik::find($id);
 
-    if ($kitap && $kitap->kitap_stok > 0) {
-        // Kitap stokta mevcutsa ve stok değeri sıfırdan büyükse
-        // Stok değerini azalt
-        $kitap->kitap_stok -= 1;
-        $kitap->save();
 
-        // Kullanıcının envanterine eklemek için gerekli işlemleri yapın
-        // Örnek olarak, varsayılan olarak kimlik doğrulama yapmamış bir kullanıcıya eklemek için:
-        if (auth()->check()) {
-            $kullanici = auth()->user();
-            // Kullanıcının envanterine kitabı ekleyin
-            $kullanici->envanter()->attach($kitap->id);
-        }
-
-        return redirect()->back()->with('success', 'Kitap başarıyla satın alındı.');
-    }
-
-    return redirect()->back()->with('error', 'Kitap satın alınamadı.');
-}
-
-public function envanter()
-{
-    $kullanici = auth()->user();
-
-    // Kullanıcının envanterini alın
-    $envanter = $kullanici->kitaplar;
-
-    return view('kullanici.envanter', compact('envanter'));
-}
-    
 }

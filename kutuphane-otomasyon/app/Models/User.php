@@ -42,11 +42,4 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
-
-    public function envanter()
-    {
-        return $this->belongsToMany(Kitap::class, 'user_kitap', 'user_id', 'kitap_id');
-    }
-
-
 }

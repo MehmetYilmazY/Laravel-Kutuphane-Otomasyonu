@@ -32,6 +32,8 @@
                         <input type="email" name="email" placeholder="E-Posta">
                         <input type="password" name="password" placeholder="Şifre">
                         <!-- Diğer gerekli alanları buraya ekleyin -->
+                        <br>
+
                         <button type="submit">Ekle</button>
                     </form>
 

@@ -17,8 +17,10 @@
                 <th>Kitap Yazarı</th>
                 <th>ISBN Kodu</th>
                 <th>Kimde</th>
-                <th>Düzenle</th>
-                <th>Sil</th>
+                @if (auth()->user()->usertype === 'admin')
+                    <th>Düzenle</th>
+                    <th>Sil</th>
+                @endif
             </tr>
         </thead>
         <tbody>
@@ -29,16 +31,18 @@
                     <td>{{ $kitap->kitap_yazar }}</td>
                     <td>{{ $kitap->kitap_ISBN }}</td>
                     <td>{{ $kitap->kitap_kimde }}</td>
-                    <td>
-                        <a href="{{ route('kitap.edit', $kitap->id) }}" class="btn btn-primary btn-sm">Düzenle</a>
-                    </td>
-                    <td>
-                        <form action="{{ route('kitap.destroy', $kitap->id) }}" method="POST" class="d-inline">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm">Sil</button>
-                        </form>
-                    </td>
+                    @if (auth()->user()->usertype === 'admin')
+                        <td>
+                            <a href="{{ route('kitap.edit', $kitap->id) }}" class="btn btn-primary btn-sm">Düzenle</a>
+                        </td>
+                        <td>
+                            <form action="{{ route('kitap.destroy', $kitap->id) }}" method="POST" class="d-inline">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger btn-sm">Sil</button>
+                            </form>
+                        </td>
+                    @endif
                 </tr>
             @endforeach
         </tbody>

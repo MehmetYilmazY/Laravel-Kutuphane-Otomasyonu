@@ -35,6 +35,11 @@
                     <div class="mb-3">
                         <a href="{{ route('kitap.satiliklist') }}" class="btn btn-outline-primary btn-lg btn-block">Satılıklar</a>
                     </div>
+
+                    <div class="mb-3">
+                        <a href="{{ route('kullanici.envanter') }}" class="btn btn-outline-primary btn-lg btn-block">Satın Aldıklarım</a>
+                    </div>
+
                 </div>
             </div>
         </div>

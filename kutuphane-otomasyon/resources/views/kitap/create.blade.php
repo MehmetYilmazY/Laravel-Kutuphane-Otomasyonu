@@ -37,6 +37,7 @@
                             <label for="kitap_ISBN" class="form-label">ISBN Kodu</label>
                             <input type="text" name="kitap_ISBN" id="kitap_ISBN" class="form-control" placeholder="ISBN Kodu">
                         </div>
+                        <br>
                         <!-- Diğer gerekli alanları buraya ekleyin -->
                         <button type="submit" class="btn btn-primary">Ekle</button>
                     </form>

@@ -36,6 +36,7 @@
                         </div>
 
                         <!-- Diğer gerekli alanları buraya ekleyin -->
+                        <br>
 
                         <button type="submit" class="btn btn-primary">Güncelle</button>
                     </form>

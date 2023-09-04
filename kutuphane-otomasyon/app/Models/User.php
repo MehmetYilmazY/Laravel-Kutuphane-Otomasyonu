@@ -46,7 +46,6 @@ class User extends Authenticatable
     public function envanter()
     {
         return $this->belongsToMany(Kitap::class, 'user_kitap', 'user_id', 'kitap_id');
+        return $this->belongsToMany(Satilik::class, 'user_kitap', 'user_id', 'kitap_id');
     }
-
-
 }

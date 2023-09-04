@@ -184,28 +184,31 @@ public function satinAl($id)
         $kitap->kitap_stok -= 1;
         $kitap->save();
 
-        // Kullanıcının envanterine eklemek için gerekli işlemleri yapın
-        // Örnek olarak, varsayılan olarak kimlik doğrulama yapmamış bir kullanıcıya eklemek için:
         if (auth()->check()) {
             $kullanici = auth()->user();
-            // Kullanıcının envanterine kitabı ekleyin
+            // Kullanıcının envanterine kitabı ekle
             $kullanici->envanter()->attach($kitap->id);
         }
 
         return redirect()->back()->with('success', 'Kitap başarıyla satın alındı.');
+    } 
+    else {
+        return redirect()->back()->with('error', 'Kitap satın alınamadı. Stokta Yok!');
     }
-
-    return redirect()->back()->with('error', 'Kitap satın alınamadı.');
 }
+
 
 public function envanter()
 {
-    $kullanici = auth()->user();
+    $kullaniciId = auth()->user()->id;
 
-    // Kullanıcının envanterini alın
-    $envanter = $kullanici->kitaplar;
+    // Kullanıcının kendi envanterini alın
+    $envanter = SatilikKitap::whereHas('user', function ($query) use ($kullaniciId) {
+        $query->where('id', $kullaniciId);
+    })->get();
 
     return view('kullanici.envanter', compact('envanter'));
 }
+
     
 }

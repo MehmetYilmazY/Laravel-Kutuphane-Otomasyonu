@@ -46,6 +46,8 @@
                             <input type="number" name="kitap_fiyat" id="kitap_fiyat" class="form-control" min="0" step="1" value="0">
                         </div>
                         <!-- Diğer gerekli alanları buraya ekleyin -->
+                        <br>
+
                         <button type="submit" class="btn btn-primary">Ekle</button>
                     </form>
                 </div>

@@ -10,16 +10,23 @@
                     <th>ID</th>
                     <th>Kitap Adı</th>
                     <th>Kitap Yazarı</th>
+                    <th>Kitap ISBN</th>
+                    <th>Kitap Sahibi</th>                    
                 </tr>
             </thead>
             <tbody>
-                @foreach($envanter as $kitap)
-                    <tr>
-                        <td>{{ $kitap->id }}</td>
-                        <td>{{ $kitap->kitap_adi }}</td>
-                        <td>{{ $kitap->kitap_yazar }}</td>
-                    </tr>
-                @endforeach
+                @foreach ($envanter as $satilikKitap)
+                <tr>
+                    <td>{{ $satilikKitap->id }}</td>
+                    <td>{{ $satilikKitap->satilik->kitap_adi }}</td>
+                    <td>{{ $satilikKitap->satilik->kitap_yazar }}</td>
+                    <td>{{ $satilikKitap->satilik->kitap_ISBN }}</td>
+                    <td>{{ $satilikKitap->user->name }}</td>
+
+
+                </tr>
+            @endforeach
+            
                 
             </tbody>
         </table>

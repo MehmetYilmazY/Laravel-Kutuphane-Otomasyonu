@@ -23,18 +23,23 @@
         </thead>
         <tbody>
             @foreach($satiliklar as $satilik)
-                <tr>
-                    <td>{{ $satilik->id }}</td>
-                    <td>{{ $satilik->kitap_adi }}</td>
-                    <td>{{ $satilik->kitap_yazar }}</td>
-                    <td>{{ $satilik->kitap_ISBN }}</td>
-                    <td>{{ $satilik->kitap_stok }}</td>
-                    <td>{{ $satilik->kitap_fiyat }} ₺</td>
-                    <td>
-                        <button class="btn btn-success btn-sm">Satın Al</button>
-                    </td>
-                </tr>
-            @endforeach
+    <tr>
+        <td>{{ $satilik->id }}</td>
+        <td>{{ $satilik->kitap_adi }}</td>
+        <td>{{ $satilik->kitap_yazar }}</td>
+        <td>{{ $satilik->kitap_ISBN }}</td>
+        <td>{{ $satilik->kitap_stok }}</td>
+        <td>{{ $satilik->kitap_fiyat }} ₺</td>
+        <td>
+            <form action="{{ route('kitap.satinAl', $satilik->id) }}" method="POST">
+                @csrf
+                <button type="submit" class="btn btn-success btn-sm">Satın Al</button>
+            </form>
+                     
+        </td>
+    </tr>
+@endforeach
+
         </tbody>
     </table>
 </div>

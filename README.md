@@ -11,7 +11,7 @@
 
 ## Gelecek Özellikler
 
-- öneri bekleniyor
+- Kitap Satışı
 
 ## Gereksinimler
 
